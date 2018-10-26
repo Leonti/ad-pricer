@@ -6,8 +6,8 @@ import           Test.Hspec
 import           Test.Hspec.QuickCheck
 import           Test.QuickCheck
 
-main :: IO ()
-main = hspec $ do
+spec :: IO ()
+spec = hspec $ do
   describe "Checkout" $ do
     it "0 dollars on empty data" $
       calculateTotal (Checkout empty empty) `shouldBe` 0

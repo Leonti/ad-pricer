@@ -23,12 +23,14 @@ dependencies:
 - base >= 4.7 && < 5
 - aeson >= 1.4.1.0
 - containers >= 0.6.0.1
+- raw-strings-qq >= 1.1
 
 library:
   source-dirs: src
   exposed-modules:
     - Checkout
     - ShoppingCart
+    - Types
 
 executables:
   ad-pricer-exe:

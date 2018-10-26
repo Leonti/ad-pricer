@@ -1,6 +1,8 @@
 module Types where
 
-import           Data.Map (Map)
+import           Data.Aeson (FromJSON (..), withObject)
+import           Data.Map   (Map)
+import qualified Data.Map   as Map
 
 data Ad =
     Classic
@@ -23,4 +25,8 @@ data Checkout = Checkout PricingRules CheckoutItems deriving (Eq, Show)
 
 newtype Customer = Customer String deriving (Eq, Ord, Show)
 
-data Config = Config (Map Customer PricingRules) (Map Ad Rational)
+data Config = Config (Map Customer PricingRules) (Map Ad Rational) deriving (Eq, Show)
+
+instance FromJSON Config where
+  parseJSON = withObject "Config" $ \v ->
+    return $ Config Map.empty Map.empty
