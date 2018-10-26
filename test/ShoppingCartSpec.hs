@@ -10,7 +10,7 @@ spec = hspec $ do
     it "returns empty checkout if no ads are in config" $
       checkout (Config empty empty) (Customer "default") [Classic]
       `shouldBe`
-      (Left "Config for Classic is missing")
+      Left "Config for Classic is missing"
     it "returns empty checkout if no ads are in the shopping cart" $
       checkout (Config empty (fromList [(Classic, 100)])) (Customer "default") []
       `shouldBe`
