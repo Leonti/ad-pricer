@@ -61,4 +61,5 @@ The response should be:
 ## Running tests
 
 ```bash
+stack test
 ```
