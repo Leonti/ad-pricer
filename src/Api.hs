@@ -36,13 +36,9 @@ type Api = "checkout" :> ReqBody '[JSON] ShoppingCartRequest :> Post '[JSON] Che
 checkoutHandler :: ShoppingCartRequest -> Handler CheckoutResponse
 checkoutHandler (ShoppingCartRequest c ads) = do
   jsonConfig <- liftIO $ LB.readFile "config.json"
-  let resp = do
-              config <- eitherDecode jsonConfig :: Either String Config
-              calculateTotal <$> checkout config c ads
-  case resp of
+  case calculateTotal <$> (eitherDecode jsonConfig >>= (\cfg -> checkout cfg c ads)) of
     Right t -> return $ CheckoutResponse t
-    Left e      -> Handler (throwError $ err400 { errBody = (TLE.encodeUtf8 . TL.pack) e })
-
+    Left e  -> Handler (throwError $ err400 { errBody = (TLE.encodeUtf8 . TL.pack) e })
 
 api :: Proxy Api
 api = Proxy

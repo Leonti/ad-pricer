@@ -49,7 +49,7 @@ instance FromJSONKey Ad where
 
 instance FromJSON Deal where
   parseJSON = withObject "Deal" $ \o -> do
-    dealType <- o .: "type" :: Parser String
+    dealType <- o .: "type"
     case dealType of
       "qtyExtraAds"  -> QuantityExtraAds <$> o .: "threshold" <*> o .: "dealQty"
       "qtyPriceDrop" -> QuantityPriceDrop <$> o .: "threshold" <*> ((% 100) <$> (o .: "price":: Parser Integer))
@@ -58,7 +58,6 @@ instance FromJSON Deal where
 
 instance FromJSON Config where
   parseJSON = withObject "Config" $ \o -> do
-    prices <- o .: "prices" :: Parser (Map Ad Integer)
-    rules <- o .: "rules" :: Parser (Map Customer PricingRules)
-
+    prices <- o .: "prices"
+    rules <- o .: "rules"
     return $ Config rules (Map.map (% 100) prices)
