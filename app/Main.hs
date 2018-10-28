@@ -1,6 +1,6 @@
 module Main where
 
---import           Checkout
+import           Api (runServer)
 
 main :: IO ()
-main = putStrLn "running"
+main = runServer 8080

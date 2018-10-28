@@ -1,54 +1,14 @@
-name:                ad-pricer
-version:             0.1.0.0
-github:              "githubuser/ad-pricer"
-license:             BSD3
-author:              "Author name here"
-maintainer:          "example@example.com"
-copyright:           "2018 Author name here"
-
-extra-source-files:
-- README.md
-- ChangeLog.md
-
-# Metadata used when publishing your package
-# synopsis:            Short description of your package
-# category:            Web
-
-# To avoid duplicated efforts in documentation and dealing with the
-# complications of embedding Haddock markup inside cabal files, it is
-# common to point users to the README.md file.
-description:         Please see the README on GitHub at <https://github.com/githubuser/ad-pricer#readme>
-
-dependencies:
-- base >= 4.7 && < 5
-- aeson >= 1.4.1.0
-- text
-- containers >= 0.6.0.1
-- raw-strings-qq >= 1.1
-
 library:
   source-dirs: src
   exposed-modules:
-    - Checkout
-    - ShoppingCart
-    - Types
-
-executables:
-  ad-pricer-exe:
-    main:                Main.hs
-    source-dirs:         app
-    ghc-options:
-    - -threaded
-    - -rtsopts
-    - -Wall
-    - -with-rtsopts=-N
-    dependencies:
-    - ad-pricer
-
+  - Checkout
+  - ShoppingCart
+  - Types
+  - Api
 tests:
   ad-pricer-test:
-    main:                Spec.hs
-    source-dirs:         test
+    source-dirs: test
+    main: Spec.hs
     ghc-options:
     - -threaded
     - -rtsopts
@@ -58,3 +18,36 @@ tests:
     - ad-pricer
     - hspec
     - QuickCheck
+copyright: 2018 Author name here
+maintainer: example@example.com
+dependencies:
+- bytestring
+- base >= 4.7 && < 5
+- aeson >= 1.4.1.0
+- text
+- containers
+- raw-strings-qq >= 1.1
+- servant == 0.14.1
+- servant-server
+- wai
+- warp
+name: ad-pricer
+version: 0.1.0.0
+extra-source-files:
+- README.md
+- ChangeLog.md
+author: Author name here
+github: githubuser/ad-pricer
+license: BSD3
+executables:
+  ad-pricer-exe:
+    source-dirs: app
+    main: Main.hs
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -Wall
+    - -with-rtsopts=-N
+    dependencies:
+    - ad-pricer
+description: Please see the README on GitHub at <https://github.com/githubuser/ad-pricer#readme>

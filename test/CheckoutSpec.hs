@@ -1,10 +1,8 @@
 module CheckoutSpec where
 
 import           Checkout
-import           Data.Map              (empty, fromList)
+import           Data.Map   (empty, fromList)
 import           Test.Hspec
-import           Test.Hspec.QuickCheck
-import           Test.QuickCheck
 
 spec :: IO ()
 spec = hspec $ do
