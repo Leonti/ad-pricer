@@ -12,4 +12,4 @@ data CardRequest = CardRequest
   } deriving (Show, Generic, FromJSON)
 
 newtype CheckoutResponse = CheckoutResponse
-  { total :: Integer } deriving (Show, Generic, ToJSON)
+  { total :: Rational } deriving (Show, Generic, ToJSON)
