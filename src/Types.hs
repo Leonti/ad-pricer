@@ -30,7 +30,7 @@ type PricingRules = Map Ad Deal
 type CheckoutItems = Map Ad PriceQty
 data Checkout = Checkout PricingRules CheckoutItems deriving (Eq, Show)
 
-newtype Customer = Customer String deriving (Eq, Ord, Show, FromJSONKey)
+newtype Customer = Customer String deriving (Eq, Ord, Show, FromJSONKey, FromJSON)
 
 data Config = Config (Map Customer PricingRules) (Map Ad Rational) deriving (Eq, Show)
 
